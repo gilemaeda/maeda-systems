@@ -1,0 +1,250 @@
+/* Estilos para o chat animado */
+.chat-container {
+  background-color: #0c0c2a;
+  border-radius: 12px;
+  border: 1px solid rgba(100, 181, 246, 0.25);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 25px rgba(100, 181, 246, 0.15);
+  height: 100%;
+  width: 100%;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: rgba(17, 17, 78, 0.8);
+  border-bottom: 1px solid rgba(100, 181, 246, 0.25);
+}
+
+.chat-avatar {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #64B5F6, #1A237E);
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+}
+
+.chat-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+}
+
+.chat-status {
+  font-size: 12px;
+  color: #64B5F6;
+  margin-left: 5px;
+}
+
+.chat-body {
+  padding: 15px;
+  height: calc(100% - 56px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-message {
+  max-width: 80%;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-radius: 18px;
+  position: relative;
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+.chat-message-received {
+  align-self: flex-start;
+  background-color: rgba(17, 17, 78, 0.8);
+  border-bottom-left-radius: 5px;
+  animation-name: fadeInLeft;
+}
+
+.chat-message-sent {
+  align-self: flex-end;
+  background-color: rgba(100, 181, 246, 0.25);
+  border-bottom-right-radius: 5px;
+  animation-name: fadeInRight;
+}
+
+.chat-message-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.chat-time {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 5px;
+  text-align: right;
+}
+
+.chat-typing {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.typing-bubble {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-right: 5px;
+  animation: typingAnimation 1s infinite ease-in-out;
+}
+
+.typing-bubble:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.typing-bubble:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.typing-bubble:nth-child(3) {
+  animation-delay: 0.6s;
+  margin-right: 0;
+}
+
+@keyframes typingAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+@keyframes fadeInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.whatsapp-style .chat-container {
+  background-color: #111132;
+  border: 1px solid rgba(0, 230, 118, 0.25);
+}
+
+.whatsapp-style .chat-header {
+  background-color: rgba(7, 94, 84, 0.3);
+  border-bottom: 1px solid rgba(0, 230, 118, 0.25);
+}
+
+.whatsapp-style .chat-avatar {
+  background: linear-gradient(45deg, #25D366, #128C7E);
+}
+
+.whatsapp-style .chat-status {
+  color: #25D366;
+}
+
+.whatsapp-style .chat-message-received {
+  background-color: rgba(7, 94, 84, 0.3);
+}
+
+.whatsapp-style .chat-message-sent {
+  background-color: rgba(0, 230, 118, 0.25);
+}
+
+/* Para animar a entrada */
+.chat-animation-container {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  perspective: 1000px;
+}
+
+.chat-animation {
+  height: 100%;
+  width: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.8s ease-in-out;
+}
+
+.chat-animation.rotate {
+  transform: rotateY(180deg);
+}
+
+.chat-front, .chat-back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  backface-visibility: hidden;
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.chat-back {
+  transform: rotateY(180deg);
+}
+
+/* Glow effects */
+.chat-container {
+  position: relative;
+}
+
+.chat-container:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #64B5F6, transparent, #64B5F6);
+  z-index: -1;
+  border-radius: 14px;
+  animation: glowingAnimation 3s linear infinite;
+  opacity: 0.5;
+}
+
+.whatsapp-style .chat-container:before {
+  background: linear-gradient(45deg, #25D366, transparent, #25D366);
+}
+
+@keyframes glowingAnimation {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}

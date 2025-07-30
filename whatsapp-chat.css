@@ -1,0 +1,158 @@
+/* WhatsApp Chat Demo Styles */
+.chat-container {
+  background-color: #111132;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 230, 118, 0.25);
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 0 25px rgba(100, 181, 246, 0.15);
+  height: 100%;
+  width: 100%;
+}
+
+.chat-header {
+  display: flex;
+  align-items: center;
+  padding: 12px 15px;
+  background-color: rgba(7, 94, 84, 0.3);
+  border-bottom: 1px solid rgba(0, 230, 118, 0.25);
+}
+
+.chat-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(45deg, #64B5F6, #1A237E);
+  margin-right: 10px;
+  font-weight: bold;
+  font-size: 14px;
+  color: white;
+}
+
+.chat-name {
+  font-weight: 600;
+  font-size: 14px;
+  color: white;
+}
+
+.chat-status {
+  font-size: 12px;
+  color: #25D366;
+  margin-left: 5px;
+}
+
+.chat-body {
+  padding: 15px;
+  height: calc(100% - 56px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-message {
+  max-width: 80%;
+  padding: 10px 14px;
+  margin-bottom: 10px;
+  border-radius: 18px;
+  position: relative;
+  opacity: 1;
+}
+
+.chat-message-received {
+  align-self: flex-start;
+  background-color: rgba(7, 94, 84, 0.3);
+  border-bottom-left-radius: 5px;
+}
+
+.chat-message-sent {
+  align-self: flex-end;
+  background-color: rgba(0, 230, 118, 0.25);
+  border-bottom-right-radius: 5px;
+}
+
+.chat-message-text {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 14px;
+  line-height: 1.4;
+  white-space: pre-line;
+}
+
+.chat-time {
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.5);
+  margin-top: 5px;
+  text-align: right;
+}
+
+.chat-typing {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.typing-bubble {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background-color: rgba(255, 255, 255, 0.5);
+  margin-right: 5px;
+  animation: typingAnimation 1s infinite ease-in-out;
+}
+
+.typing-bubble:nth-child(1) {
+  animation-delay: 0.2s;
+}
+
+.typing-bubble:nth-child(2) {
+  animation-delay: 0.4s;
+}
+
+.typing-bubble:nth-child(3) {
+  animation-delay: 0.6s;
+  margin-right: 0;
+}
+
+@keyframes typingAnimation {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+}
+
+/* Glow effect */
+.chat-container:before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #25D366, transparent, #25D366);
+  z-index: -1;
+  border-radius: 14px;
+  animation: glowingAnimation 3s linear infinite;
+  opacity: 0.5;
+}
+
+@keyframes glowingAnimation {
+  0% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 0.8;
+  }
+  100% {
+    opacity: 0.5;
+  }
+}
